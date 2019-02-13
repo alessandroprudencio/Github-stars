@@ -1,0 +1,20 @@
+
+#menu-lateral.h1{
+    position: absolute;
+width: 114px;
+height: 24px;
+left: 212px;
+top: 478px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+font-size: 20px;
+
+color: #FFFFFF;
+}
+
+#menu-lateral{
+    background-color:#484EA8;
+}

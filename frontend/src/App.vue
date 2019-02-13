@@ -1,27 +1,38 @@
 <template>
   <div id="app">
     <router-view/>
-    <areaPesquisa/>
+     <v-container>
+                      <area-pesquisa/>       
 
+        <v-layout row>
+          <v-flex xs3 md3>
+              <menu-lateral/>
+          </v-flex>
+          <v-flex xs9 md9>
+              <conteudo/>
+          </v-flex>
+        </v-layout>
+        
+     </v-container>
+      
   </div>
 </template>
 
 <script>
 import areaPesquisa from "@/components/area-superior/area-pesquisa"
+import menuLateral from "@/components/menu-lateral/menu-lateral"
+import conteudo from "@/components/conteudo/conteudo"
 
 export default {
   name: 'App',
-  components:{areaPesquisa}
+  components:{areaPesquisa, menuLateral,  conteudo}
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 </style>
