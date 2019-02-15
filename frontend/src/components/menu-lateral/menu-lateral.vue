@@ -1,4 +1,4 @@
-<template id="menu-lateral" >
+<template>
 
   <v-container grid-list-xl text-xs-center>
     <v-layout  xs7 md3 row wrap>
@@ -44,8 +44,8 @@ export default {
 
 <style scoped>
 .superior{
-  padding: 30px;
-  border-radius: 5px 5px 0 0px;
+  padding: 25px;
+  border-radius: 5px 0px 0 0px;
   background-color:#484EA8;
 }
 
@@ -67,9 +67,15 @@ export default {
   padding-bottom: 30px;
   font-size: 12px;
   background-color:#5153B8;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 0px 5px;
 }
 .container.grid-list-xl .layout .flex {
-    padding: 0;
+    padding: 0px;
+
   }
+
+.container {
+        margin-top: 45px;
+  padding: 12px;
+}
 </style>

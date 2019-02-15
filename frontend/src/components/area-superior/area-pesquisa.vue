@@ -13,10 +13,11 @@
                         >
                             <v-text-field
                             v-model="name"
-                            :counter="10"
                             :rules="nameRules"
                             label=" github username... "
                             required
+            append-icon="place"
+
                             ></v-text-field>
 
                     </v-form>      
@@ -38,14 +39,15 @@ export default {
 
 <style scoped>
 h4{
-
-font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 line-height: normal;
+font-weight: 100;
 font-size: 36px;
+color:#666;
 }
 b{
     color: #484EA8;
-    font-weight: 500;
+    font-weight: 420;
 }
+
 </style>
 
