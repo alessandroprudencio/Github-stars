@@ -8,7 +8,7 @@
     </v-flex>
     <v-flex xs5 md9 mx-4>
       <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field v-model="name" :rules="nameRules" label=" github username... " required> </v-text-field>
+        <v-text-field v-model="name"  @change="buscarUser" label=" github username... " required> </v-text-field>
       </v-form>
     </v-flex>
 
@@ -19,7 +19,25 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios'
+
+export default {
+    data(){
+        return{
+            name:''
+        }
+    },
+   methods:{
+       buscarUser(){
+        axios.get(`https://api.github.com/users/${this.name}/starred`)
+            .then(res=>{
+                console.log(res.data[0])
+            }).catch(e=>{
+                console.log(error)
+            })
+       }
+   }
+};
 </script>
 
 <style scoped>
