@@ -1,81 +1,88 @@
 <template>
-
   <v-container grid-list-xl text-xs-center>
-    <v-layout  xs7 md3 row wrap>
-      <v-flex xs12 >
-
-      <div class="superior">       
-          <v-avatar size="100"  >
-            <img
-              src="https://cdn.vuetifyjs.com/images/john.jpg"
-              alt="John"          
-            >
+    <v-layout xs7 md3 row wrap>
+      <v-flex xs12>
+        <div class="superior">
+          <v-avatar size="100">
+            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
           </v-avatar>
-          <h1> Nome do xupim</h1>
-          <h2> Nome do xuh2im</h2>
-      </div>
+          <h1>Nome do xupim</h1>
+          <h2>Nome do xuh2im</h2>
+        </div>
       </v-flex>
     </v-layout>
-    <v-layout  row wrap>
-      <v-flex xs12 >
-      <div class="inferior">       
-       
-          <i class="fab fa-github-square"></i><p>Nome</p>
-          <p>Ciadade</p>
-          <p>Email</p>
-          <p>Site</p>
-
+    <v-layout row wrap>
+      <v-flex xs12>
+        <div class="inferior text-sm-left">
           <div>
-              alesandro@gmail.com
+            <h6>
+              Maker . Full-Time
+              Open-Sourcerer . Into Swift and Node.js
+            </h6>
           </div>
-      </div>
-      </v-flex> 
+
+          <p>
+            <i class="fab fa-github-square"></i> Alessandro Assunsão faria
+          </p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i> Campo Grande, MS
+          </p>
+          <p>
+            <i class="far fa-envelope"></i> alessandroconectado@gmail.com
+          </p>
+          <p>
+            <i class="fas fa-globe"></i> www.xupim.com.br
+          </p>
+        </div>
+      </v-flex>
     </v-layout>
-     </v-container>
-
-
+  </v-container>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped>
-.superior{
+.superior {
   padding: 25px;
   border-radius: 5px 0px 0 0px;
-  background-color:#484EA8;
+  background-color: #484ea8;
 }
 
-.superior h2{
+.superior h2 {
   font-size: 14px;
   color: white;
   font-weight: 100;
 }
-.superior h1{
+.superior h1 {
   font-size: 16px;
   color: white;
   padding-top: 25px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 100;
 }
-.inferior{
+.inferior {
   color: white;
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 4px;
   font-size: 12px;
-  background-color:#5153B8;
+  background-color: #5153b8;
   border-radius: 0 0 0px 5px;
 }
+.inferior h6 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
 .container.grid-list-xl .layout .flex {
-    padding: 0px;
-
-  }
+  padding: 0px;
+}
 
 .container {
-        margin-top: 45px;
+  margin-top: 45px;
   padding: 12px;
 }
 </style>
