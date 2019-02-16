@@ -1,13 +1,14 @@
 <template>
   <v-layout align-center justify-center row fill-height>
     <v-flex xs3 md3>
-      <h4>
+           <h4>
         Github<b>Stars</b>
       </h4>
+   
     </v-flex>
     <v-flex xs5 md9 mx-4>
       <v-form ref="form" >
-        <v-text-field v-model="name"  @change="buscarUser" label=" github username... " required> </v-text-field>
+        <v-text-field v-model="name"  append-icon="search" @change="buscarUser" label=" github username... " required> </v-text-field>
       </v-form>
     </v-flex>
 
@@ -37,15 +38,15 @@ export default {
 </script>
 
 <style scoped>
-h4 {
-  line-height: normal;
-  font-weight: 100;
-  font-size: 36px;
-  color: #666;
+.h4, h4 {
+line-height: normal;
+font-weight: 100;
+font-size: 36px;
+color: #666;
 }
-b {
-  color: #484ea8;
-  font-weight: 420;
+b, strong{
+color: #484ea8;
+font-weight: 420;
 }
 </style>
 

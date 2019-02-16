@@ -6,7 +6,6 @@ import router from './router'
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import store from './store/index'
 
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

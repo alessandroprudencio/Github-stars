@@ -54,7 +54,8 @@ export default {
       this.$store.dispatch('getDadosStarsUser');
   },
   computed:{
-      ...mapState(['dadosStarsUser'])
+      ...mapState(['dadosStarsUser']),
+      
   }
 
 };
