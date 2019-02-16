@@ -2,8 +2,7 @@
   <v-layout align-center justify-center row fill-height>
     <v-flex xs3 md3>
       <h4>
-        Github
-        <b>Stars</b>
+        Github<b>Stars</b>
       </h4>
     </v-flex>
     <v-flex xs5 md9 mx-4>

@@ -38,7 +38,7 @@
                        <v-btn outline color="indigo">star</v-btn>
                 </v-list-tile-action>
               </v-list-tile>
-                <v-divider></v-divider>              
+                <v-divider :key="index"></v-divider>              
             </template>
           </v-list>
       </v-flex>
@@ -66,7 +66,7 @@ export default {
   margin-bottom: 25px;
   background-color: white;
   height: 100%;
-  box-shadow: 2px 2px 8px 3px #aaa9a9;
+  box-shadow: 5px 2px 20px 0px #aaa9a9;
 }
 .fa-star:before{
     color: #484ea8;

@@ -4,8 +4,7 @@
       <v-flex xs12>
         <div class="superior">
           <v-avatar size="100">
-            <img v-if="dadosUser.avatar_url" :src="dadosUser.avatar_url" alt="John">
-            <img v-else src="https://cdn.vuetifyjs.com/images/john.jpg" alt="">
+            <img :src="dadosUser.avatar_url?dadosUser.avatar_url:'/static/img/user.jpg'" :alt="dadosUser.name">
           </v-avatar>
           <h1>{{dadosUser.name}}</h1>
           <h2>{{dadosUser.name}}</h2>
@@ -22,7 +21,7 @@
           </div>
 
           <p v-if="dadosUser.name">
-            <i class="fab fa-github-square"></i>{{dadosUser.name}}
+            <i class="fab fa-github-square"></i> {{dadosUser.name}}
           </p>
           <p v-if="dadosUser.location">
             <i class="fas fa-map-marker-alt"></i> {{dadosUser.location}}
@@ -31,7 +30,7 @@
             <i class="far fa-envelope"></i> {{dadosUser.email}}
           </p>
           <p v-if="dadosUser.url">
-            <i class="fas fa-globe"></i> {{dadosUser.url}}
+            <i class="fas fa-globe"></i> <a class="link" :href="dadosUser.html_url">{{ dadosUser.html_url}}</a>
           </p>
         </div>
       </v-flex>
@@ -93,5 +92,8 @@ export default {
 .container {
   margin-top: 45px;
   padding: 12px;
+}
+.link{
+  color: white;
 }
 </style>

@@ -19,17 +19,24 @@ export default new Vuex.Store({
     },
     actions:{
          getDadosUser({commit}, payload){
-             axios.get(`https://api.github.com/users/${payload}`)
+             if(payload){
+                axios.get(`https://api.github.com/users/${payload}`)
                 .then(res =>{
                     const dadosUser = res.data
+                    let nome = dadosUser.name.split(" ")
+                    let primeiroNome=nome[0]
+                    let ultimoNome=nome.slice(-1)[0]
+                    dadosUser.name = primeiroNome + ' ' + ultimoNome
                     commit('setDadosUser',dadosUser)
                 })
                 .catch(e =>{
                     console.log(e)
                 })
+             }
         },
         getDadosStarsUser({commit},payload){
-            axios.get(`https://api.github.com/users/${payload}/starred`)
+            if(payload){
+                axios.get(`https://api.github.com/users/${payload}/starred`)
                 .then(res=>{
                     const dadosStarsUser = res.data
                     commit('setDadosStarsUser',dadosStarsUser)
@@ -37,6 +44,7 @@ export default new Vuex.Store({
                 .catch(e=>{
                     console.log(e)
                 })
+            }
         } 
 
     }
