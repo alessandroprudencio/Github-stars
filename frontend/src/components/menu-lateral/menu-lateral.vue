@@ -4,10 +4,11 @@
       <v-flex xs12>
         <div class="superior">
           <v-avatar size="100">
-            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+            <img v-if="usuario.avatar_url" :src="usuario.avatar_url" alt="John">
+            <img v-else src="https://cdn.vuetifyjs.com/images/john.jpg" alt="">
           </v-avatar>
-          <h1>Nome do xupim</h1>
-          <h2>Nome do xuh2im</h2>
+          <h1>{{ usuario.name}}</h1>
+          <h2>{{ usuario.name}}</h2>
         </div>
       </v-flex>
     </v-layout>
@@ -15,23 +16,22 @@
       <v-flex xs12>
         <div class="inferior text-sm-left">
           <div>
-            <h6>
-              Maker . Full-Time
-              Open-Sourcerer . Into Swift and Node.js
+            <h6 v-if="usuario.bio">
+              {{ usuario.bio}}
             </h6>
           </div>
 
-          <p>
-            <i class="fab fa-github-square"></i> Alessandro Assunsão faria
+          <p v-if="usuario.name">
+            <i class="fab fa-github-square"></i>{{ usuario.name}}
           </p>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Campo Grande, MS
+          <p v-if="usuario.location">
+            <i class="fas fa-map-marker-alt"></i> {{ usuario.location}}
           </p>
-          <p>
-            <i class="far fa-envelope"></i> alessandroconectado@gmail.com
+          <p v-if="usuario.email">
+            <i class="far fa-envelope"></i> {{ usuario.email}}
           </p>
-          <p>
-            <i class="fas fa-globe"></i> www.xupim.com.br
+          <p v-if="usuario.url">
+            <i class="fas fa-globe"></i> {{ usuario.url}}
           </p>
         </div>
       </v-flex>
@@ -40,7 +40,24 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios'
+
+export default {
+  data(){
+    return{
+      usuario:{}
+    }
+  },
+  mounted(){
+     axios.get(`https://api.github.com/users/alessandroprudencio`)
+            .then(res=>{
+                this.usuario = res.data
+               console.log(res)
+            }).catch(e=>{
+                console.log(error)
+            })
+  }
+};
 </script>
 
 <style scoped>
