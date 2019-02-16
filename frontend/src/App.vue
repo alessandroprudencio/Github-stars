@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="fadeIn" >
     <router-view/>
-    <v-container v-if="usuario">
+    <v-container v-if="usuario" >
       <area-pesquisa/>
        <v-layout row v-if="dados" >
         <v-flex xs3 md4>
@@ -39,13 +39,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin-top: 60px;
-}
-
-</style>

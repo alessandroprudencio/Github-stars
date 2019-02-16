@@ -1,5 +1,5 @@
 <template>
-  <v-layout align-center justify-center row fill-height>
+  <v-layout  align-center justify-center row fill-height>
     <v-flex xs3 md3>
            <h4>
         Github<b>Stars</b>

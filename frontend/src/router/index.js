@@ -4,13 +4,7 @@ import login from '@/components/login/login'
 
 import Vuetify from 'vuetify'
 
-import VeeValidate from 'vee-validate'
-
-Vue.use(VeeValidate)
-Vue.use(Vuetify,{
-  iconfont: 'mdi' // 'md' || 'mdi' || 'fa' || 'fa4'
-
-})
+Vue.use(Vuetify)
 
 Vue.use(Router)
 

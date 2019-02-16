@@ -1,11 +1,10 @@
 <template>
-  <div id="login">
+  <div id="login" class="fadeIn">
     <v-container>
       <v-layout align-center justify-center xs7 md3 row>
         <v-flex grid-list-xl text-xs-center xs6>
           <h4>
-            Github
-            <b>Stars</b>
+            Github<b>Stars</b>
           </h4>
           <p>Faça login com o Git Hub</p>
 
@@ -56,18 +55,3 @@ export default {
      }
 };
 </script>
-
-<style scoped>
-.h4,
-h4 {
-  line-height: normal;
-  font-weight: 100;
-  font-size: 36px;
-  color: #666;
-}
-b,
-strong {
-  color: #484ea8;
-  font-weight: 420;
-}
-</style>
