@@ -4,11 +4,11 @@
       <v-flex xs12>
         <div class="superior">
           <v-avatar size="100">
-            <img v-if="usuario.avatar_url" :src="usuario.avatar_url" alt="John">
+            <img v-if="dadosUser.avatar_url" :src="dadosUser.avatar_url" alt="John">
             <img v-else src="https://cdn.vuetifyjs.com/images/john.jpg" alt="">
           </v-avatar>
-          <h1>{{ usuario.name}}</h1>
-          <h2>{{ usuario.name}}</h2>
+          <h1>{{dadosUser.name}}</h1>
+          <h2>{{dadosUser.name}}</h2>
         </div>
       </v-flex>
     </v-layout>
@@ -16,22 +16,22 @@
       <v-flex xs12>
         <div class="inferior text-sm-left">
           <div>
-            <h6 v-if="usuario.bio">
-              {{ usuario.bio}}
+            <h6 v-if="dadosUser.bio">
+              {{ dadosUser.bio}}
             </h6>
           </div>
 
-          <p v-if="usuario.name">
-            <i class="fab fa-github-square"></i>{{ usuario.name}}
+          <p v-if="dadosUser.name">
+            <i class="fab fa-github-square"></i>{{dadosUser.name}}
           </p>
-          <p v-if="usuario.location">
-            <i class="fas fa-map-marker-alt"></i> {{ usuario.location}}
+          <p v-if="dadosUser.location">
+            <i class="fas fa-map-marker-alt"></i> {{dadosUser.location}}
           </p>
-          <p v-if="usuario.email">
-            <i class="far fa-envelope"></i> {{ usuario.email}}
+          <p v-if="dadosUser.email">
+            <i class="far fa-envelope"></i> {{dadosUser.email}}
           </p>
-          <p v-if="usuario.url">
-            <i class="fas fa-globe"></i> {{ usuario.url}}
+          <p v-if="dadosUser.url">
+            <i class="fas fa-globe"></i> {{dadosUser.url}}
           </p>
         </div>
       </v-flex>
@@ -40,22 +40,14 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapState } from 'vuex';
 
 export default {
-  data(){
-    return{
-      usuario:{}
-    }
-  },
   mounted(){
-     axios.get(`https://api.github.com/users/alessandroprudencio`)
-            .then(res=>{
-                this.usuario = res.data
-               console.log(res)
-            }).catch(e=>{
-                console.log(error)
-            })
+     this.$store.dispatch('getDadosUser')
+  },
+  computed:{
+      ...mapState(['dadosUser'])
   }
 };
 </script>
@@ -83,7 +75,7 @@ export default {
   color: white;
   padding-top: 30px;
   padding-bottom: 15px;
-  padding-left: 20px;
+  padding-left: 15px;
   padding-right: 4px;
   font-size: 12px;
   background-color: #5153b8;

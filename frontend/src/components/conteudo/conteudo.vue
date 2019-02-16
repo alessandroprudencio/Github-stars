@@ -4,7 +4,7 @@
       <v-flex xs12 class="text-sm-left">
 
             <v-list three-line>
-            <template v-for="(item, index) in items">
+            <template v-for="(item, index) in dadosStarsUser">
               <v-subheader
                 v-if="item.header"
                 :key="item.header"
@@ -33,11 +33,12 @@
 
                   <v-list-tile-sub-title><i class="far fa-star"></i>    {{  item.stargazers_count}}</v-list-tile-sub-title>
                 </v-list-tile-content>
-
+            
                 <v-list-tile-action>
                        <v-btn outline color="indigo">star</v-btn>
                 </v-list-tile-action>
               </v-list-tile>
+                <v-divider></v-divider>              
             </template>
           </v-list>
       </v-flex>
@@ -47,22 +48,13 @@
 </template>
 
 <script>
-import axios from 'axios'
-
+import {mapState} from 'vuex'
 export default {
-data () {
-    return {
-      items: []
-    }
-  },
   mounted(){
-        axios.get(`https://api.github.com/users/alessandroprudencio/starred`)
-            .then(res=>{
-                this.items.push(...res.data)
-               console.log(res)
-            }).catch(e=>{
-                console.log(error)
-            })
+      this.$store.dispatch('getDadosStarsUser');
+  },
+  computed:{
+      ...mapState(['dadosStarsUser'])
   }
 
 };

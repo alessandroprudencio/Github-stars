@@ -7,7 +7,7 @@
       </h4>
     </v-flex>
     <v-flex xs5 md9 mx-4>
-      <v-form ref="form" v-model="valid" lazy-validation>
+      <v-form ref="form" >
         <v-text-field v-model="name"  @change="buscarUser" label=" github username... " required> </v-text-field>
       </v-form>
     </v-flex>
@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+import {mapState} from 'vuex'
 
 export default {
     data(){
@@ -29,13 +30,9 @@ export default {
     },
    methods:{
        buscarUser(){
-        axios.get(`https://api.github.com/users/${this.name}/starred`)
-            .then(res=>{
-                console.log(res.data[0])
-            }).catch(e=>{
-                console.log(error)
-            })
-       }
+        this.$store.dispatch('getDadosStarsUser',this.name)
+        this.$store.dispatch('getDadosUser',this.name)
+       },
    }
 };
 </script>
