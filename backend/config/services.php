@@ -30,6 +30,12 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'github' => [
+        'client_id' => '2b302a24cdb7a9490101',
+        'client_secret' => '7bace6e942ca13142b14a060747eeb2589e0f6b5',
+        'redirect' => 'http://localhost:8000/login/github/callback',
+    ],
+
     'stripe' => [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
