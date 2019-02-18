@@ -1,8 +1,7 @@
 <template>
   <v-layout  align-center justify-center row fill-height>
     <v-flex xs3 md3>
-           <h4>
-        Github<b>Stars</b>
+           <h4>Github<b>Stars</b>
       </h4>
    
     </v-flex>
@@ -13,7 +12,7 @@
     </v-flex>
 
     <v-avatar size="60">
-      <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+      <img :src="avatar" alt="John">
     </v-avatar>
   </v-layout>
 </template>
@@ -23,9 +22,10 @@ import axios from 'axios'
 import {mapState} from 'vuex'
 
 export default {
+  props:['avatar'],
     data(){
         return{
-            name:''
+            name:'',
         }
     },
    methods:{
@@ -33,20 +33,10 @@ export default {
         this.$store.dispatch('getDadosStarsUser',this.name)
         this.$store.dispatch('getDadosUser',this.name)
        },
+   },
+   mounted(){
+      
    }
 };
 </script>
-
-<style scoped>
-.h4, h4 {
-line-height: normal;
-font-weight: 100;
-font-size: 36px;
-color: #666;
-}
-b, strong{
-color: #484ea8;
-font-weight: 420;
-}
-</style>
 

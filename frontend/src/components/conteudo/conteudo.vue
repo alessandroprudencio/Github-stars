@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-xl text-xs-center class="conteudo">
+  <v-container grid-list-xl text-xs-center class="conteudo fadeIn">
     <v-layout xs7 md3 row wrap>
       <v-flex xs12 class="text-sm-left">
 
@@ -31,11 +31,11 @@
                   <v-list-tile-title v-html="item.full_name"></v-list-tile-title>   
                  <v-list-tile-sub-title>  {{ item.description}}</v-list-tile-sub-title>
 
-                  <v-list-tile-sub-title><i class="far fa-star"></i>    {{  item.stargazers_count}}</v-list-tile-sub-title>
+                  <v-list-tile-sub-title><i class="far fa-star"></i>    {{item.stargazers_count}}</v-list-tile-sub-title>
                 </v-list-tile-content>
             
                 <v-list-tile-action>
-                       <v-btn outline color="indigo">star</v-btn>
+                       <v-btn outline color="indigo" @click="starRepositore">star</v-btn>
                 </v-list-tile-action>
               </v-list-tile>
                 <v-divider :key="index"></v-divider>              
@@ -48,28 +48,21 @@
 </template>
 
 <script>
+import axios from 'axios'
 import {mapState} from 'vuex'
 export default {
   mounted(){
       this.$store.dispatch('getDadosStarsUser');
+      
   },
   computed:{
-      ...mapState(['dadosStarsUser']),
-      
+      ...mapState(['dadosStarsUser']),    
+  },
+  methods:{
+    starRepositore(){
+       this.$store.dispatch('setStar')
+    },
   }
 
 };
 </script>
-
-<style scoped>
-.conteudo {
-  margin-top: 25px;
-  margin-bottom: 25px;
-  background-color: white;
-  height: 100%;
-  box-shadow: 5px 2px 20px 0px #aaa9a9;
-}
-.fa-star:before{
-    color: #484ea8;
-}
-</style>
