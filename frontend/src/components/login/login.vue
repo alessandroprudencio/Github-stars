@@ -47,6 +47,7 @@ export default {
 
       this.$store.dispatch("setLogin")
 
+
       setTimeout(() => (this[l] = false), 3000);
 
       this.loader = null;

@@ -7,7 +7,7 @@
     </v-flex>
     <v-flex xs5 md9 mx-4>
       <v-form ref="form" >
-        <v-text-field v-model="name"  append-icon="search" @change="buscarUser" label=" github username... " required> </v-text-field>
+        <v-text-field v-model="name" @click:append="buscarUser" append-icon="search" @change="buscarUser" label=" github username... " required> </v-text-field>
       </v-form>
     </v-flex>
 
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import {mapState} from 'vuex'
 
 export default {

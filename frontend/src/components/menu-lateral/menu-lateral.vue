@@ -30,7 +30,7 @@
             <i class="far fa-envelope"></i> {{dadosUser.email}}
           </p>
           <p v-if="dadosUser.url">
-            <i class="fas fa-globe"></i> <a class="link" :href="dadosUser.html_url">{{ dadosUser.html_url}}</a>
+            <i class="fas fa-globe"></i><a class="link" :href="dadosUser.html_url"> {{ dadosUser.html_url}}</a>
           </p>
         </div>
       </v-flex>
@@ -48,6 +48,9 @@ export default {
   },
   computed:{
       ...mapState(['dadosUser'])
+  },
+  beforeUpdate() {
+    console.log('DENTRO BEFORE UDPATEMENU-ALTERAL', this.dadosUser)
   }
 };
 </script>

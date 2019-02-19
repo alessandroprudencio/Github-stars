@@ -28,7 +28,7 @@ export default new Vuex.Store({
             let parametros = ''
 
             if (payload) parametros = payload
-            else parametros = usuarioLogado.username
+            else if(usuarioLogado) parametros = usuarioLogado.username
 
             axios.get(`https://api.github.com/users/${parametros}?access_token=${token}`)
                 .then(res => {
@@ -56,19 +56,9 @@ export default new Vuex.Store({
             let parametros = ''
 
             if (payload) parametros = payload
-            else parametros = usuarioLogado.username
+            if(usuarioLogado && !payload ) parametros = usuarioLogado.username
 
-            axios.get(`https://api.github.com/users/${parametros}/starred?access_token=${token}`)
-                .then(res => {
-                    const dadosStarsUser = res.data
-                    commit('setDadosStarsUser', dadosStarsUser)
-                })
-                .catch(e => {
-                    console.log(e)
-                })
-        },
-        setStar({ commit }, payload) {
-            axios.put('https://github.com/user/starred/surmon-china/vue-awesome-swiper?access_token=eyJhbGciOiJSUzI1NiIsImtpZCI6IjNiYmQyOGVkYzNkMTBiOTI5ZjU3NWEyY2E2ODU0OWZjYTZkODg5OTMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZ2l0aHViLXN0YXJzLTM3NmRiIiwibmFtZSI6IkFsZXNzYW5kcm8gUHJ1ZGVuY2lvIGRhIENydXogU2lsdmEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9hdmF0YXJzMC5naXRodWJ1c2VyY29udGVudC5jb20vdS8zOTQ3MzMwNT92PTQiLCJhdWQiOiJnaXRodWItc3RhcnMtMzc2ZGIiLCJhdXRoX3RpbWUiOjE1NTA0NTExMDMsInVzZXJfaWQiOiJ5TmFmb0dXRWwxUnBOTlZuaGJyRzhWeUZydTEzIiwic3ViIjoieU5hZm9HV0VsMVJwTk5Wbmhickc4VnlGcnUxMyIsImlhdCI6MTU1MDQ1MTEwMywiZXhwIjoxNTUwNDU0NzAzLCJlbWFpbCI6ImFsZXNzYW5kcm9jb25lY3RhZG9AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImdpdGh1Yi5jb20iOlsiMzk0NzMzMDUiXSwiZW1haWwiOlsiYWxlc3NhbmRyb2NvbmVjdGFkb0BnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnaXRodWIuY29tIn19.TSI8kT5DqmhdulQheHelQN_AubO6m_3AsdTwpPzqmEhRi7uCezF7Qv1PlC12eRdt0r-OVfzT4IHr1TGxAYPNFoYwz42Lfsv-QNFaaRzJmcb7CX4V2shxxaha8Sj_cpyVbZaXJ0REXKnxts45gRMauMHBtu_04cJLDiGWfxm8BUrvbia7GeeyJuXP4OvkZD_VJLQ4SYQHGL-Jmxlz0rBhkeK_YUlvfBnTEKMc2nSMzZbcd-1fOC4J3QHe2GkX0la1fAMuJCXDHy5VDLeTERNjtP_ZzePS4lCNHouhwV15vyaTplZrvUmFATrq43iyqj5pfmOSUuUWZoPy8jqGOqgyxQ')
+            axios.get(`https://api.github.com/users/${parametros}/starred?per_page=10&access_token=${token}`)
                 .then(res => {
                     const dadosStarsUser = res.data
                     commit('setDadosStarsUser', dadosStarsUser)

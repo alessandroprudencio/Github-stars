@@ -2,7 +2,7 @@
   <div id="app" class="fadeIn">
     <router-view/>
     <v-container>
-      <area-pesquisa v-if="usuarioLogado" :avatar="avatar"/>
+      <area-pesquisa  v-if="usuarioLogado" :avatar="avatar"/>
       <v-layout row v-if="usuarioLogado && dados">
         <v-flex xs3 md3>
           <menu-lateral :usuario="usuario"/>
@@ -50,6 +50,7 @@ export default {
     if (!this.usuarioLogado) this.$router.push("/login");
 
     if(this.usuarioLogado)this.$store.dispatch("getDadosStarsUser");
+    console.log('dentro do app.vue MOunted')
     if(this.usuarioLogado)this.$store.dispatch("getDadosUser");
   },
   beforeUpdate() {
@@ -61,8 +62,8 @@ export default {
     if(this.usuarioLogado) {
         this.avatar = this.usuarioLogado.profile.avatar_url;
     }
-    this.$store.dispatch("getDadosStarsUser");
-   
+    console.log('dentro do app.vue beforeUpdate')
+       
   },
 
 };

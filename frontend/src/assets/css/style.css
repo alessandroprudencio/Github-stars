@@ -99,6 +99,7 @@ strong {
     .container {
       margin-top: 45px;
       padding: 12px;
+      min-height: 48%;
     }
     .link{
       color: white;
@@ -106,10 +107,26 @@ strong {
     .conteudo {
       margin-top: 25px;
       margin-bottom: 25px;
+      padding-left: 7%;
       background-color: white;
-      height: 100%;
+      height: 90%;
       box-shadow: 5px 2px 20px 0px #aaa9a9;
     }
+    ::-webkit-scrollbar {
+      width: 8px;
+  }
+   
+  ::-webkit-scrollbar-track {
+      border-radius: 10px;
+      
+  }
+   
+  ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #6f75c6;
+
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  }
     .fa-star:before{
         color: #484ea8;
     }
