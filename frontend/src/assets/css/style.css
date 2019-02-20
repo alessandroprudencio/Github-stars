@@ -104,10 +104,13 @@ strong {
     .link{
       color: white;
     }
+    .link:hover{
+      color: white;
+    }
     .conteudo {
       margin-top: 25px;
       margin-bottom: 25px;
-      padding: 3.5%;
+      padding: 2% 3.5% 3.5% 3.5%;
       background-color: white;
       height: 80%;
       max-height:50%;

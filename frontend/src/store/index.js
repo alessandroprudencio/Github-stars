@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from '@/router/index'
-import {dadosStars} from '@/querys/DadosStars'
+import { DataStarsQuery } from '@/querys/DataStarsQuery'
+import { DataUserQuery } from '@/querys/DataUserQuery'
 
 Vue.use(Vuex, axios)
 
@@ -20,7 +21,7 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        getDadosUser({ commit }, payload) {
+        async getDadosUser({ commit }, payload) {
             let usuarioLogado = localStorage.getItem("usuarioLogado");
             usuarioLogado = JSON.parse(usuarioLogado);
 
@@ -29,11 +30,13 @@ export default new Vuex.Store({
             let parametros = ''
 
             if (payload) parametros = payload
-            else if(usuarioLogado) parametros = usuarioLogado.username
+            else if (usuarioLogado) parametros = usuarioLogado.username
 
-            axios.get(`https://api.github.com/users/${parametros}?access_token=${token}`)
+            await axios.post(`https://api.github.com/graphql?access_token=${token}`, {
+                query: DataUserQuery(parametros)
+            })
                 .then(res => {
-                    const dadosUser = res.data
+                    const dadosUser = res.data.data.user
                     if (dadosUser.name) {
                         var nome = dadosUser.name.split(" ")
                         var primeiroNome = nome[0]
@@ -57,11 +60,11 @@ export default new Vuex.Store({
             let parametros = ''
 
             if (payload) parametros = payload
-            if(usuarioLogado && !payload ) parametros = usuarioLogado.username
+            if (usuarioLogado && !payload) parametros = usuarioLogado.username
 
             await axios.post(`https://api.github.com/graphql?access_token=${token}`, {
-                query:dadosStars(parametros)
-              })
+                query: DataStarsQuery(parametros)
+            })
                 .then(res => {
                     const dadosStarsUser = res.data.data.user.starredRepositories.nodes
                     commit('setDadosStarsUser', dadosStarsUser)
@@ -70,26 +73,26 @@ export default new Vuex.Store({
                     console.log(e)
                 })
         },
-        setLogin(){
+        setLogin() {
 
             let provider = new firebase.auth.GithubAuthProvider();
 
             firebase
-              .auth()
-              .signInWithPopup(provider)
-              .then(result => {
-                var token = result.credential.accessToken;
+                .auth()
+                .signInWithPopup(provider)
+                .then(result => {
+                    var token = result.credential.accessToken;
 
-                var user = result.additionalUserInfo;
-                localStorage.setItem("usuarioLogado", JSON.stringify(user));
-                localStorage.setItem("oAuthAccess", token);
+                    var user = result.additionalUserInfo;
+                    localStorage.setItem("usuarioLogado", JSON.stringify(user));
+                    localStorage.setItem("oAuthAccess", token);
 
-                router.push({name:'/'})
+                    router.push({ name: '/' })
 
-              })
-              .catch(error => {
-                console.log(error)
-              });
+                })
+                .catch(error => {
+                    console.log(error)
+                });
         }
 
     }

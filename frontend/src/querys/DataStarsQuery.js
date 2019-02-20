@@ -1,5 +1,5 @@
-export function dadosStars(nome)  {  
- return ` { 
+export function DataStarsQuery(nome) {
+    return ` { 
     user(login:"${nome}") { 
         starredRepositories(first:5) {
         nodes {
