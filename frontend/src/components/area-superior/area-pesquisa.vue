@@ -3,6 +3,27 @@
     <v-flex xs3 md3>
       <h4>Github<b>Stars</b></h4>
     </v-flex>
+    <v-dialog
+      v-model="dialog"
+      v-if="dialog"
+      hide-overlay
+      persistent
+      width="300"
+    >
+      <v-card
+        color="blue"
+        dark
+      >
+        <v-card-text>
+          Carregando...
+          <v-progress-linear
+            indeterminate
+            color="white"
+            class="mb-0"
+          ></v-progress-linear>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
     <v-flex xs5 md9 mx-4>
       <v-form ref="form">
         <v-text-field
@@ -13,7 +34,9 @@
           label=" github username... "
           required
         ></v-text-field>
+        
       </v-form>
+      
     </v-flex>
 
     <v-avatar size="60">
@@ -30,13 +53,15 @@ export default {
   data() {
     return {
       name: "",
-      dialog: true
+      dialog: false
     };
   },
   methods: {
     buscarUser() {
-      this.$store.dispatch("getDadosStarsUser", this.name);
-      this.$store.dispatch("getDadosUser", this.name);
+      this.dialog = true
+      this.$store.dispatch("getDadosStarsUser", this.name)
+        .then(()=>this.dialog=false)
+      this.$store.dispatch("getDadosUser", this.name)
     },
     async show() {
       try {
