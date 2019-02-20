@@ -2,10 +2,10 @@
   <div id="app" class="fadeIn">
     <router-view/>
     <v-container>
-      <area-pesquisa  v-if="usuarioLogado" :avatar="avatar"/>
+      <area-pesquisa v-if="usuarioLogado" :avatar="avatar"/>
       <v-layout row v-if="usuarioLogado && dados">
         <v-flex xs3 md3>
-          <menu-lateral :usuario="usuario"/>
+          <menu-lateral  :usuario="usuario"/>
         </v-flex>
         <v-flex xs9 md10>
           <conteudo/>
@@ -27,7 +27,6 @@ import menuLateral from "@/components/menu-lateral/menu-lateral";
 import conteudo from "@/components/conteudo/conteudo";
 import userNotFound from "@/components/conteudo/user-not-found";
 import { mapState } from "vuex";
-import axios from 'axios'
 
 export default {
   data() {
@@ -53,6 +52,7 @@ export default {
     console.log('dentro do app.vue MOunted')
     if(this.usuarioLogado)this.$store.dispatch("getDadosUser");
   },
+
   beforeUpdate() {
     this.usuarioLogado = localStorage.getItem("usuarioLogado");
     this.usuarioLogado = JSON.parse(this.usuarioLogado);

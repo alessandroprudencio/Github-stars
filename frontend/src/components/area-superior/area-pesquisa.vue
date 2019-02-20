@@ -1,13 +1,21 @@
 <template>
-  <v-layout  align-center justify-center row fill-height>
+  <v-layout align-center justify-center row fill-height>
     <v-flex xs3 md3>
-           <h4>Github<b>Stars</b>
+      <h4>Github
+        <b>Stars</b>
       </h4>
-   
+      <button @click="show">SHOW GRAPHQL</button>
     </v-flex>
     <v-flex xs5 md9 mx-4>
-      <v-form ref="form" >
-        <v-text-field v-model="name" @click:append="buscarUser" append-icon="search" @change="buscarUser" label=" github username... " required> </v-text-field>
+      <v-form ref="form">
+        <v-text-field
+          v-model="name"
+          @click:append="buscarUser"
+          append-icon="search"
+          @change="buscarUser"
+          label=" github username... "
+          required
+        ></v-text-field>
       </v-form>
     </v-flex>
 
@@ -18,24 +26,33 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
-
+import { mapState } from "vuex";
+import axios from "axios";
 export default {
-  props:['avatar'],
-    data(){
-        return{
-            name:'',
-        }
+  props: ["avatar"],
+  data() {
+    return {
+      name: "",
+      dialog: true
+    };
+  },
+  methods: {
+    buscarUser() {
+      this.$store.dispatch("getDadosStarsUser", this.name);
+      this.$store.dispatch("getDadosUser", this.name);
     },
-   methods:{
-       buscarUser(){
-        this.$store.dispatch('getDadosStarsUser',this.name)
-        this.$store.dispatch('getDadosUser',this.name)
-       },
-   },
-   mounted(){
-      
-   }
+    async show() {
+      try {
+        const res = await axios.post("https://api.github.com/graphql?access_token=50f4d6d41f93bf92cf7c7972ba9822961c30a286", {
+          query: '{user(login:"alessandroprudencio"){id}}'
+        });
+        console.log(res.data)
+      } catch (e) {
+        console.log("err", e);
+      }
+    }
+  },
+  mounted() {}
 };
 </script>
 

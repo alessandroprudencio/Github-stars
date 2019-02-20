@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from '@/router/index'
+import {dadosStars} from '@/querys/DadosStars'
 
 Vue.use(Vuex, axios)
 
@@ -47,7 +48,7 @@ export default new Vuex.Store({
                 })
 
         },
-        getDadosStarsUser({ commit }, payload) {
+        async getDadosStarsUser({ commit }, payload) {
             let usuarioLogado = localStorage.getItem("usuarioLogado");
             usuarioLogado = JSON.parse(usuarioLogado);
 
@@ -58,9 +59,11 @@ export default new Vuex.Store({
             if (payload) parametros = payload
             if(usuarioLogado && !payload ) parametros = usuarioLogado.username
 
-            axios.get(`https://api.github.com/users/${parametros}/starred?per_page=10&access_token=${token}`)
+            await axios.post(`https://api.github.com/graphql?access_token=${token}`, {
+                query:dadosStars(parametros)
+              })
                 .then(res => {
-                    const dadosStarsUser = res.data
+                    const dadosStarsUser = res.data.data.user.starredRepositories.nodes
                     commit('setDadosStarsUser', dadosStarsUser)
                 })
                 .catch(e => {
