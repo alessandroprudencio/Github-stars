@@ -8,16 +8,16 @@ import firebase from 'firebase'
 
 Vue.config.productionTip = false
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBwkM4VCZbKjIZnAcKYck_veF95LTEqJUA",
-    authDomain: "github-stars-376db.firebaseapp.com",
-    databaseURL: "https://github-stars-376db.firebaseio.com",
-    projectId: "github-stars-376db",
-    storageBucket: "github-stars-376db.appspot.com",
-    messagingSenderId: "239847900425"
-  };
-  firebase.initializeApp(config);
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBwkM4VCZbKjIZnAcKYck_veF95LTEqJUA",
+      authDomain: "github-stars-376db.firebaseapp.com",
+      databaseURL: "https://github-stars-376db.firebaseio.com",
+      projectId: "github-stars-376db",
+      storageBucket: "github-stars-376db.appspot.com",
+      messagingSenderId: "239847900425"
+    };
+    firebase.initializeApp(config);
 
   window.firebase=firebase
 

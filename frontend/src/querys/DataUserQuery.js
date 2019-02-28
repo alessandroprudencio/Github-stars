@@ -1,7 +1,8 @@
 export function DataUserQuery(login) {
     return `{
      user(login:"${login}") { 
-        name,
+        name
+        login
         avatarUrl
         email
         location

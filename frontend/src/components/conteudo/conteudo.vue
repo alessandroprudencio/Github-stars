@@ -20,7 +20,7 @@
               </v-list-tile-content>
 
               <v-list-tile-action>
-                <v-btn outline color="indigo">star</v-btn>
+                <v-btn outline color="indigo" @click="starRepository(item)">star</v-btn>
               </v-list-tile-action>
             </v-list-tile>
             <v-divider v-if="index + 1 < dadosStarsUser.length" :key="`divider-${index}`"></v-divider>
@@ -37,10 +37,23 @@ import { mapState } from "vuex";
 export default {
   mounted() {
     this.$store.dispatch("getDadosStarsUser");
+    this.$store.dispatch("getDadosUser");
   },
 
   computed: {
-    ...mapState(["dadosStarsUser"])
+    ...mapState(["dadosStarsUser"]),
+    ...mapState(["dadosUser"])
+  },
+  methods: {
+    starRepository(item) {
+      let user = JSON.parse(localStorage.getItem("usuarioLogado"))
+
+      if (this.dadosUser.login == user.username) {
+        this.$store.dispatch("setRemoveStar", item);
+      } else {
+        this.$store.dispatch("addStar", item);
+      }
+    }
   }
 };
 </script>
