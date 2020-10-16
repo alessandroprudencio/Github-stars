@@ -1,6 +1,6 @@
 # github-stars
 
-> Criar um app em que o usuário busque por nome ou apelido de outro usuário no Github
+> Criar uma api com GraphQL que busque um usuário do Git e retorno detalhes
 
 ## Build Setup
 
